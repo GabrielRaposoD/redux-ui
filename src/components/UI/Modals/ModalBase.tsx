@@ -1,9 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useRef } from 'react';
-import { ModalBaseProps } from 'components/UI/Modals/types';
-import cs from 'clsx';
+import { ModalIntrinsicProps } from 'ducks/ui/types';
 
-const ModalBase: React.FC<ModalBaseProps> = ({
+const ModalBase: React.FC<ModalIntrinsicProps> = ({
   close,
   isOpen,
   children,
@@ -35,11 +34,7 @@ const ModalBase: React.FC<ModalBaseProps> = ({
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
           >
-            <Dialog.Overlay
-              className={cs(
-                'bg-opacity-30 absolute inset-0 z-0 transition-opacity bg-black'
-              )}
-            />
+            <Dialog.Overlay className='bg-opacity-30 absolute inset-0 z-0 transition-opacity bg-black' />
           </Transition.Child>
           <span
             className='inline-block h-screen align-middle'
