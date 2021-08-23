@@ -1,11 +1,22 @@
-import { Button } from 'components/Button/';
-import { ModalTypes, SidesheetTypes } from 'ducks/ui/types';
+import { Button } from 'components/Button';
+import {
+  ModalTypes,
+  SidesheetIntrinsicProps,
+  SidesheetTypes,
+} from 'ducks/ui/types';
 import { useUI } from 'hooks/useUI';
 
-export default function Home() {
+export interface HelloWorldSidesheetProps extends SidesheetIntrinsicProps {
+  message: string;
+}
+
+const HelloWorldSidesheet: React.FC<HelloWorldSidesheetProps> = ({
+  message,
+}) => {
   const UI = useUI();
   return (
-    <div className='flex flex-row gap-5 p-8'>
+    <div className='gap-y-5 flex flex-col p-4'>
+      <button>{message}</button>
       <Button
         onClick={() => {
           UI.operations.modal.openModal({
@@ -30,4 +41,6 @@ export default function Home() {
       />
     </div>
   );
-}
+};
+
+export { HelloWorldSidesheet };
